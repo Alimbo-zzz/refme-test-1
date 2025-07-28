@@ -109,7 +109,7 @@
 	line-height: 100%;
 	letter-spacing: -0.32px;
 	white-space: nowrap;
-	@include line-clamp(1);
+	// @include line-clamp(1);
 
 }
 
@@ -117,7 +117,7 @@
 	text-align: right;
 	justify-self: end;
 	flex: 1;
-	@include line-clamp(1);
+	// @include line-clamp(1);
 }
 
 .foot {
@@ -138,7 +138,7 @@
 	bottom: 0;
 	left: 0;
 	color: var(--input-helper_text, #575E76);
-	@include line-clamp(1);
+	// @include line-clamp(1);
 }
 
 .err {
@@ -148,5 +148,5 @@
 	left: 0;
 	position: absolute;
 	color: var(--input-helper_text_error, #FA4845);
-	@include line-clamp(1);
+	// @include line-clamp(1);
 }
