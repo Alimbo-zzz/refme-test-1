@@ -1,0 +1,19 @@
+$container: 1320px;
+$container-p: 30px;
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+main {
+	flex: 1;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: calc($container + ($container-p * 2));
+	width: calc(100% - ($container-p * 2));
+}

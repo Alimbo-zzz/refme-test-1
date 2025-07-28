@@ -1,0 +1,36 @@
+.footer {
+	border-top: var(--stroke-border, 1px) solid var(--Border-Default, #AEBCD3);
+	background: var(--sds-color-background-neutral-tertiary, #dbe3eb);
+	padding: var(--padding-page, 64px) 0;
+
+	[name=full-logo] {
+		width: 100px;
+		height: auto;
+	}
+}
+
+.grid {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	gap: var(--indent-32, 32px);
+}
+
+
+.socials {
+	display: flex;
+	align-items: center;
+	gap: inherit;
+	font-size: 20px;
+}
+
+.btns {
+	display: flex;
+	align-items: center;
+	gap: var(--base-indent-8, 8px);
+}

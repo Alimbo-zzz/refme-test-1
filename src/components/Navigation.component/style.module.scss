@@ -1,0 +1,24 @@
+.nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--indent-32, 32px);
+
+
+
+	a {
+		color: var(--header_button-default, #01182D);
+		font-family: var(--Headline-family, Inter);
+		font-size: var(--Headline-size3, 16px);
+		font-style: normal;
+		font-weight: var(--Headline-weight_medium, 500);
+		line-height: 100%;
+		letter-spacing: -0.16px;
+		transition: color 0.2s;
+
+
+		&[data-active=true] {
+			color: var(--header_button-active, #0079FF);
+		}
+	}
+}

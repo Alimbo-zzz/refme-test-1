@@ -1,0 +1,38 @@
+.wrap {
+	display: grid;
+	grid-template-columns: 1fr 460px;
+	grid-template-rows: auto auto;
+	gap: var(--indent-48, 48px);
+	padding: var(--padding-page, 64px) 0;
+}
+
+
+.top {
+	grid-row: span 2;
+
+
+	&__pin {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		position: sticky;
+		top: 50px;
+	}
+}
+
+.search {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
+	align-items: center;
+
+	&__title {}
+
+
+}
+
+.cards {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}

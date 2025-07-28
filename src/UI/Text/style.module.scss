@@ -1,0 +1,32 @@
+:where(.text) {
+	color: var(--sds-color-text-default-default);
+	font-family: var(--Description-family, Inter);
+	align-self: start;
+	justify-self: start;
+
+
+	&[data-size=small] {
+		font-size: var(--Description-size1, 14px);
+	}
+
+	&[data-size=medium] {
+		font-size: var(--Body-size2, 16px);
+	}
+
+	&[data-size=large] {
+		font-size: var(--Body-size1, 20px);
+	}
+}
+
+.text {
+	font-style: normal;
+	font-weight: var(--Description-weight, 400);
+	line-height: 120%;
+	letter-spacing: -0.14px;
+	// -----------------
+	display: -webkit-box;
+	-webkit-line-clamp: var(--lines);
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -1,0 +1,34 @@
+h1.title {
+	font-size: var(--Hero-size, 64px);
+	line-height: 86%;
+	font-weight: var(--Hero-weight, 500);
+	letter-spacing: -2.56px;
+}
+
+h2.title {
+	font-family: var(--Title-family, "Space Grotesk");
+	font-size: var(--Title-size2, 32px);
+	font-style: normal;
+	font-weight: var(--Title-weight, 500);
+	line-height: 96%;
+	letter-spacing: -0.96px;
+}
+
+:where(.title) {
+	color: var(--sds-color-text-default-default);
+	font-family: var(--Hero-family, "Space Grotesk");
+
+	&[data-var=normal] {
+		font-family: var(--Headline-family, Inter);
+	}
+}
+
+.title {
+	font-style: normal;
+	// -----------------
+	display: -webkit-box;
+	-webkit-line-clamp: var(--lines);
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

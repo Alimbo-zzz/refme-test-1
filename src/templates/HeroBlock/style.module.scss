@@ -1,0 +1,42 @@
+.wrap {
+	display: flex;
+	flex-direction: column;
+	gap: var(--indent-32, 32px) 0;
+	padding: var(--padding-page) 0;
+}
+
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 430px;
+	gap: var(--indent-12, 12px);
+	grid-template-areas:
+		"title desc"
+		"title btn"
+	;
+
+
+	&__title {
+		grid-area: title;
+	}
+
+	&__desc {
+		grid-area: desc;
+		max-width: 250px;
+	}
+
+	&__btn {
+		grid-area: btn;
+		align-self: end;
+		justify-self: start;
+	}
+
+}
+
+
+
+.cards {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
