@@ -1,7 +1,7 @@
 h1.title {
 	font-size: var(--Hero-size, 64px);
 	line-height: 86%;
-	font-weight: var(--Hero-weight, 500);
+	font-weight: var(--Title-weight, 400);
 	letter-spacing: -2.56px;
 }
 
@@ -9,14 +9,41 @@ h2.title {
 	font-family: var(--Title-family, "Space Grotesk");
 	font-size: var(--Title-size2, 32px);
 	font-style: normal;
-	font-weight: var(--Title-weight, 500);
+	font-weight: var(--Title-weight, 400);
 	line-height: 96%;
 	letter-spacing: -0.96px;
 }
 
+h3.title {
+	font-family: var(--Title-family, "Space Grotesk");
+	font-size: var(--Headline-size1, 24px);
+	font-style: normal;
+	font-weight: var(--Title-weight, 400);
+	line-height: 96%;
+	letter-spacing: -0.48px;
+}
+
+h4.title {
+	font-family: var(--Title-family, "Space Grotesk");
+	font-size: var(--Headline-size2, 20px);
+	font-style: normal;
+	font-weight: var(--Headline-weight_medium, 400);
+	line-height: 100%;
+	letter-spacing: -0.4px;
+}
+
+h5.title {
+	font-family: var(--Title-family, "Space Grotesk");
+	font-size: var(--Headline-size3, 16px);
+	font-style: normal;
+	font-weight: var(--Headline-weight_medium, 400);
+	line-height: 100%;
+	letter-spacing: -0.16px;
+}
+
 :where(.title) {
 	color: var(--sds-color-text-default-default);
-	font-family: var(--Hero-family, "Space Grotesk");
+	font-weight: var(--Title-weight, 400);
 
 	&[data-var=normal] {
 		font-family: var(--Headline-family, Inter);
@@ -25,10 +52,10 @@ h2.title {
 
 .title {
 	font-style: normal;
-	// -----------------
 	display: -webkit-box;
 	-webkit-line-clamp: var(--lines);
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-weight: 400;
 }

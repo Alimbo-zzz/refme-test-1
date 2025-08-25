@@ -8,17 +8,18 @@ export type T_TextProps =
 	React.ComponentProps<'p'> &
 	React.ComponentProps<typeof motion.p> & {
 		lines?: number;
-		size?: 'small' | 'medium' | 'large';
+		variant?: 'body' | 'body-2' | 'desc' | 'desc-2' | 'label' | 'label-2';
+		underline?: boolean;
 	} & MotionProps;
 
-export const Text = ({ children, lines, style, className, size = 'medium', ...props }: T_TextProps) => {
+export const Text = ({ children, lines, style, className, variant = 'desc', underline = false, ...props }: T_TextProps) => {
 
 	return (<>
 		<motion.p
 			{...props}
 			className={clsx(className, cls.text)}
-			data-size={size}
-			style={{ '--lines': lines, ...style } as React.CSSProperties}
+			data-var={variant}
+			style={{ '--lines': lines, textDecoration: underline ? 'underline' : 'none', ...style } as React.CSSProperties}
 		>
 			{children}
 		</motion.p>

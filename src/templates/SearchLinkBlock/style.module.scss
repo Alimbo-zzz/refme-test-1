@@ -16,23 +16,41 @@
 		flex-direction: column;
 		gap: 10px;
 		position: sticky;
-		top: 50px;
+		top: 100px;
 	}
 }
 
 .search {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 20px;
-	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+
+	&__head {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 20px;
+		align-items: center;
+	}
+
+	&__foot {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__inp {}
 
 	&__title {}
 
+
+	&__select {}
 
 }
 
 .cards {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	gap: 20px;
 }

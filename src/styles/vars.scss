@@ -36,8 +36,8 @@
 	--button-danger-secondary-fill-active: var(--background-danger-tertiary_hover);
 	--button-danger-secondary-fill-disable: var(--background-disabled-default);
 	--button-danger-secondary-text-default: var(--text_and_icon-danger-default);
-	--button-danger-secondary-text-disable: var(--text_and_icon-disabled-on_disabled);
 	--button-danger-secondary-stroke-default: var(--border-danger_secondary);
+	--button-danger-secondary-text-disable: var(--text_and_icon-disabled-on_disabled);
 	--button-danger-secondary-stroke-hover: var(--border-danger_hover);
 	--button-danger-secondary-stroke-active: var(--border-danger_secondary);
 	--button-danger-subtle-text-default: var(--text_and_icon-danger-default);
@@ -117,6 +117,8 @@
 	--indent-12: 12px;
 	--padding-sm: 12px;
 	--padding-m: 16px;
+	--word-color: var(--text_and_icon-warning-default);
+	--word-height: var(--height-control-big);
 	/* Colors_primitives*/
 	--brand-1: #eff3f7;
 	--brand-2: #dbe3eb;
@@ -339,24 +341,24 @@
 	/* Typography*/
 	--hero-family: "[object Object]";
 	--title-family: "[object Object]";
-	--title-weight: var(--weight_medium);
+	--title-weight: var(--weight_regular);
 	--title-size1: var(--font-1);
 	--title-size2: var(--font-2);
-	--hero-weight: var(--weight_medium);
+	--hero-weight: var(--weight_regular);
 	--hero-size: var(--font-1);
 	--headline-family: "[object Object]";
-	--headline-weight_medium: var(--weight_medium);
-	--headline-weight_semibold: var(--weight_semibold);
+	--headline-weight_medium: var(--weight_regular);
+	--headline-weight_semibold: var(--weight_medium);
 	--headline-size1: var(--font-3);
 	--headline-size2: var(--font-4);
 	--headline-size3: var(--font-5);
 	--body-family: "[object Object]";
-	--body-weight_regular: var(--weight_regular);
-	--body-weight_medium: var(--weight_medium);
+	--body-weight_regular: var(--weight_light);
+	--body-weight_medium: var(--weight_regular);
 	--body-size1: var(--font-4);
 	--body-size2: var(--font-5);
 	--description-family: "[object Object]";
-	--description-weight: var(--weight_regular);
+	--description-weight: var(--weight_light);
 	--description-size1: var(--font-6);
 	--description-size2: var(--font-7);
 	/* Typography_primitives*/

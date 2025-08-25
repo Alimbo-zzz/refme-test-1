@@ -12,10 +12,12 @@ export const Header = ({ className = null }: any) => {
 
 
 	return (<>
-		<header className={clsx(cls.header, 'container', className)}>
-			<Icon name='full-logo' />
-			<Navigation />
-			<Button variant='secondary' size='small' onClick={() => router.push('/auth')}> Log in/Sign up </Button>
+		<header className={clsx(cls.header, className)}>
+			<div className={`${cls.header__cont} container`}>
+				<Icon name='full-logo' />
+				<Navigation />
+				<Button variant='secondary' size='small' onClick={() => router.push('/auth')}> Log in/Sign up </Button>
+			</div>
 		</header>
 	</>)
 }

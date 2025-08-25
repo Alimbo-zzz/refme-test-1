@@ -38,7 +38,7 @@ export const LinkCard = (props: any) => {
 				<img src="/images/test-logo.png" />
 			</div>
 			<div className={cls.info}>
-				<Text lines={3} size='large'>The main terms and benefits of using the link will be written here – you can limit the number of characters or hide anything beyond three lines with an ellipsis</Text>
+				<Text lines={3} variant='body'>The main terms and benefits of using the link will be written here – you can limit the number of characters or hide anything beyond three lines with an ellipsis</Text>
 				<div className={cls.tags}>
 					<div data-color='blue' className={cls.tag}><Icon name='user-tick' /> anastasiia designer 335</div>
 					<div data-color='green' className={cls.tag}><Icon name='certificate' /> security checked</div>
@@ -47,7 +47,7 @@ export const LinkCard = (props: any) => {
 			</div>
 			<div className={cls.foot}>
 				<div className={cls.copy}>
-					<a href={copyText}>{copyText}</a>
+					<a target='_blank' href={copyText}>{copyText}</a>
 					<div className={cls.copy__icon} onClick={copyAction}>
 						{isCopy
 							? <Icon name='tick' />

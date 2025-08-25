@@ -10,8 +10,8 @@ export const HeroBlock = (props: any) => {
 	return (<>
 		<div className={`${cls.wrap} container`}>
 			<div className={cls.grid}>
-				<Title lines={3} className={cls.grid__title} level={1} >Start earn and save money on referral programs easy with our service – RefMe</Title>
-				<Text size='small' lines={3} className={cls.grid__desc} >You don't need an account to view and use links, but you do need to sign up or log in to post your referral links</Text>
+				<Title lines={3} className={cls.grid__title} level={1} >Start earning and saving money on referral programs easy with our service – RefMe</Title>
+				<Text variant='desc' lines={3} className={cls.grid__desc} >You don't need an account to view and use links, but you do need to sign up or log in to post your referral links</Text>
 				<Button className={cls.grid__btn} >Post referral link now <Icon name='unlink' /></Button>
 			</div>
 			<div className={cls.cards}>

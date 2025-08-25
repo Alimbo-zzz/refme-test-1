@@ -1,15 +1,21 @@
 .header {
-	position: sticky;
+	position: fixed;
 	top: 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	left: 0;
+	width: 100%;
 	padding: var(--padding-m, 16px) 0;
 	background: var(--sds-color-background-default-default, #F3F3F1);
-	z-index: 10;
+	z-index: 20;
 
 	[name=full-logo] {
 		width: 100px;
 		height: auto;
+	}
+
+
+	&__cont {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 }

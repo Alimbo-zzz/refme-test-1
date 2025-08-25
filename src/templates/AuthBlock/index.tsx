@@ -1,10 +1,43 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cls from './style.module.scss';
 import { useUI } from '@/UI';
+import { InpValidationRule } from '@/UI/InputText';
 
 export const AuthBlock = (props: any) => {
 	const { Title, InputText, Button, Icon } = useUI();
+	const [formData, setFormData] = useState<any>({
+		email: ['', false],
+		password: ['', false],
+	});
+	const [formValid, SET_formValid] = useState(true);
+
+	useEffect(() => {
+		let result = true;
+		Object.values(formData).forEach((value: any) => !value[1] ? (result = false) : null);
+		SET_formValid(result)
+	}, [formData])
+
+	const validations = {
+		email: [
+			{ required: true, email: true, }
+		] as InpValidationRule[],
+		password: [
+			{ required: true, minLength: 6 }
+		] as InpValidationRule[]
+	}
+
+
+
+	const sendReq = (e: any) => {
+		// e.preventDefault();
+	}
+
+	const changeInp = (inp: any) => {
+		let name = inp.event.target.name;
+		// console.log(name, inp.isValid)
+		setFormData((prev: any) => ({ ...prev, [name]: [inp.value, inp.isValid] }))
+	}
 
 	return (<>
 		<div className={cls.wrap}>
@@ -25,11 +58,11 @@ export const AuthBlock = (props: any) => {
 					<Button variant='primary'>Log in with Google <Icon name='google' /></Button>
 					<Button variant='primary'>Log in with Apple <Icon name='apple' /></Button>
 				</div>
-				<form className={cls.form}>
+				<form onSubmit={sendReq} className={cls.form}>
 					<div className={cls.form__legend}>or log in with email</div>
-					<InputText errorMessage='error email' required w='100%' type='email' title='Email' />
-					<InputText errorMessage='error password' required w='100%' type='password' title='Password' />
-					<Button type='submit' variant='secondary' w='100%'>Log in</Button>
+					<InputText w='100%' value={formData.email[0]} onChange={changeInp} name='email' validationRules={validations.email} label='Email' />
+					<InputText w='100%' value={formData.password[0]} name='password' onChange={changeInp} validationRules={validations.password} type='password' label='Password' />
+					<Button disabled={!formValid} type='submit' variant='secondary' w='100%'>Log in</Button>
 				</form>
 				<div className={cls.auth__hint}><p>Don't have an account?</p> <a href="/">Sign up</a></div>
 			</div>
