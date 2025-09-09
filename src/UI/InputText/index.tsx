@@ -47,6 +47,7 @@ export type T_InputProps = Omit<ComponentProps<'input'>, 'onChange' | 'onBlur' |
 	isRecent?: boolean;
 	popular?: null | string[];
 	advice?: null | string[];
+	forgot?: string;
 }
 
 
@@ -74,6 +75,7 @@ export const InputText = (props: T_InputProps) => {
 		isRecent = false,
 		popular,
 		advice,
+		forgot,
 		...rest
 	} = props;
 	const [isFocused, setIsFocused] = useState(false);
@@ -200,7 +202,7 @@ export const InputText = (props: T_InputProps) => {
 
 	return (<>
 		<div {...ops.wrap} className={clsx(cls.wrap, className)}>
-			<InpHead {...({ label, type })} />
+			<InpHead {...({ label, type, forgot })} />
 			<div data-err={(showValidation && isTouched && !validation.isValid)} className={cls.inp}>
 				<InpIcons {...({ clear, handleIconClick, value, togglePasswordVisibility, type, inputType, iconL, iconR })}>
 					<input {...ops.inp} />
