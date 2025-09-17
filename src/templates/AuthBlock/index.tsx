@@ -4,9 +4,14 @@ import cls from './style.module.scss';
 import { useUI } from '@/UI';
 import { InpValidationRule } from '@/UI/InputText';
 import { useRouter } from 'next/navigation';
+import { fetchDataPOST, parseTokenExpiry } from '@/scripts';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import Cookies from 'js-cookie';
 
 export const AuthBlock = (props: any) => {
 	const router = useRouter();
+	const { API_URL } = useSelector((state: RootState) => state.env)
 	const { Title, Text, InputText, InputCode, Button, Icon } = useUI();
 	const [formData, setFormData] = useState<any>({
 		email: ['', false],
@@ -31,27 +36,66 @@ export const AuthBlock = (props: any) => {
 	}
 
 
+	const setTokens = ({ refreshToken = '', accessToken = '' }: any) => {
+		const accessExpiry = parseTokenExpiry('15m');
+		const refreshExpiry = parseTokenExpiry('30d');
+		Cookies.set('access_token', accessToken, {
+			expires: accessExpiry, // 1 день
+			secure: true,
+			sameSite: 'strict'
+		});
 
-	const sendReq = (e: any) => {
+		Cookies.set('refresh_token', refreshToken, {
+			expires: refreshExpiry, // 7 дней
+			secure: true,
+			sameSite: 'strict'
+		});
+	}
+
+	const sendReq = async (e: any) => {
 		e.preventDefault();
+		const password = formData.password[0];
+		const email = formData.email[0];
+		if (type == 'sign-in') {
+			const fetchData = await fetch(`${API_URL}/api/auth/login`, fetchDataPOST({ email, password }))
+			const { accessToken, refreshToken } = await fetchData.json();
+			if (fetchData?.ok) {
+				setTokens({ accessToken, refreshToken })
+				router.push('/')
+			} else {
+				alert('Wrong login or password');
+			}
 
-		if (type == 'sign-in') return router.push('/');
+			return;
+		};
 		if (type == 'username') return router.push('/');
-		if (type == 'sign-up') return SET_type('code');
+		if (type == 'sign-up') {
+			const fetchData = await fetch(`${API_URL}/api/auth/register`, fetchDataPOST({ email, password }))
+			const res = await fetchData.json();
+			SET_type('code');
+			return
+		}
 	}
 
 	const changeInp = (inp: any) => {
 		let name = inp.event.target.name;
-		// console.log(name, inp.isValid)
 		setFormData((prev: any) => ({ ...prev, [name]: [inp.value, inp.isValid] }))
 	}
 
 	const checkValid = async (code: any) => {
-
-		if (code == '1111') setTimeout(() => {
-			SET_type('username')
-		}, 500);;
-		return code == '1111'
+		try {
+			const email = formData.email[0];
+			const fetchData = await fetch(`${API_URL}/api/auth/verify-code`, fetchDataPOST({ email, code }))
+			const { accessToken, refreshToken } = await fetchData.json();
+			if (fetchData?.ok) {
+				setTokens({ accessToken, refreshToken })
+				SET_type('username')
+				return true
+			}
+			return fetchData?.ok
+		} catch (error) {
+			return false
+		}
 	};
 
 	const titleObj = {
@@ -119,7 +163,7 @@ export const AuthBlock = (props: any) => {
 						<InputText w='100%' value={formData.email[0]} onChange={changeInp} name='email' validationRules={validations.email} label='Email' />
 						<InputText w='100%' value={formData.password[0]} forgot={type == 'sign-in' ? 'link' : ''} name='password' onChange={changeInp} validationRules={validations.password} type='password' label='Password' />
 					</>}
-					{type == 'sign-up' && <InputText w='100%' name='password' onChange={changeInp} type='password' label='Confirm password' />}
+					{type == 'sign-up' && <InputText w='100%' name='password-confirm' validationRules={[{ custom: (value) => value == formData.password[0], message: 'Passwords do not match' }]} onChange={changeInp} type='password' label='Confirm password' />}
 					<Button disabled={['sign-up', 'sign-in'].includes(type) && !formValid} type='submit' variant={['sign-up', 'sign-in'].includes(type) ? 'secondary' : 'primary'} w='100%'>{submitObj[type]}</Button>
 				</form>
 				<div className={cls.auth__hint}>{hintObj[type]}</div>
