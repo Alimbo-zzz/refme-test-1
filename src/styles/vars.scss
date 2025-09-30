@@ -36,8 +36,8 @@
 	--button-danger-secondary-fill-active: var(--background-danger-tertiary_hover);
 	--button-danger-secondary-fill-disable: var(--background-disabled-default);
 	--button-danger-secondary-text-default: var(--text_and_icon-danger-default);
-	--button-danger-secondary-stroke-default: var(--border-danger_secondary);
 	--button-danger-secondary-text-disable: var(--text_and_icon-disabled-on_disabled);
+	--button-danger-secondary-stroke-default: var(--border-danger_secondary);
 	--button-danger-secondary-stroke-hover: var(--border-danger_hover);
 	--button-danger-secondary-stroke-active: var(--border-danger_secondary);
 	--button-danger-subtle-text-default: var(--text_and_icon-danger-default);
@@ -455,4 +455,8 @@
 	--labels2_underline-font-family: "Inter";
 	--labels2_underline-font-weight: normal;
 	--labels2_underline-line-height: 100%;
+	--h1_mobile-font-size: 36px;
+	--h1_mobile-font-family: "Space Grotesk";
+	--h1_mobile-font-weight: normal;
+	--h1_mobile-line-height: 100%;
 }

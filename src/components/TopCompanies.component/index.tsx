@@ -5,7 +5,7 @@ import { v4 as setId } from 'uuid';
 import { useUI } from '@/UI';
 
 export const TopCompanies = (props: any) => {
-	const { Title, Icon } = useUI();
+	const { Title, Icon, Button } = useUI();
 
 	const items = [
 		{ id: setId(), logo: '/images/company logo/r.png', name: 'Revolut Bank', desc: '£60 for new users through the referral program' },
@@ -23,7 +23,7 @@ export const TopCompanies = (props: any) => {
 		<div className={cls.wrap}>
 			<div className={cls.head}>
 				<Title level={2}>Top companies</Title>
-				<a href="/companies">View all <Icon name='arrow' /></a>
+				<Button size='hug' variant='subtle'>View all <Icon name='arrow' /></Button>
 			</div>
 			<div className={cls.grid}>
 				{items.map(el => <div className={cls.item} key={el.id} data-desc={el.desc ? true : false}>

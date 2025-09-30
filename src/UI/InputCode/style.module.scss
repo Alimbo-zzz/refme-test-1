@@ -18,8 +18,8 @@
 	}
 
 	&[data-valid=true] .input {
-		color: rgb(19, 209, 66);
-		border-color: currentColor;
+		// color: rgb(19, 209, 66);
+		// border-color: currentColor;
 	}
 }
 
@@ -67,7 +67,7 @@
 
 	&:focus {
 		border-color: #3b71ca;
-		box-shadow: 0 0 0 3px rgba(59, 113, 202, 0.15);
+		// box-shadow: 0 0 0 3px rgba(59, 113, 202, 0.15);
 		transform: translateY(-2px);
 	}
 

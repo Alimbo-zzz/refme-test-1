@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cls from './style.module.scss';
 import { useUI } from '@/UI';
 import { InpValidationRule } from '@/UI/InputText';
@@ -19,6 +19,9 @@ export const AuthBlock = (props: any) => {
 	});
 	const [formValid, SET_formValid] = useState(true);
 	const [type, SET_type] = useState<'sign-in' | 'sign-up' | 'code' | 'username'>('sign-in');
+	const [errInpApi, SET_errInpApi] = useState('');
+	const timeoutRef = useRef<any>(null);
+
 
 	useEffect(() => {
 		let result = true;
@@ -54,6 +57,8 @@ export const AuthBlock = (props: any) => {
 
 	const sendReq = async (e: any) => {
 		e.preventDefault();
+		clearTimeout(timeoutRef.current);
+		SET_errInpApi('');
 		const password = formData.password[0];
 		const email = formData.email[0];
 		if (type == 'sign-in') {
@@ -63,7 +68,10 @@ export const AuthBlock = (props: any) => {
 				setTokens({ accessToken, refreshToken })
 				router.push('/')
 			} else {
-				alert('Wrong login or password');
+				SET_errInpApi('Wrong login or password');
+				timeoutRef.current = setTimeout(() => {
+					SET_errInpApi('')
+				}, 3000);
 			}
 
 			return;
@@ -127,6 +135,10 @@ export const AuthBlock = (props: any) => {
 	} as any;
 
 
+	const authGoogle = async () => {
+		router.push(`${API_URL}/api/auth/google`)
+	}
+
 	return (<>
 		<div className={cls.wrap}>
 			<div className={cls.preview}>
@@ -149,7 +161,7 @@ export const AuthBlock = (props: any) => {
 					{(['code', 'username'].includes(type)) && <Text className={cls.text}>{textObj[type]}</Text>}
 				</div>
 				{(['sign-up', 'sign-in'].includes(type)) && <div className={cls.auth__btns}>
-					<Button className={cls.btn} variant='primary'>Log in with Google <Icon name='google-fill' /></Button>
+					<Button onClick={authGoogle} className={cls.btn} variant='primary'>Log in with Google <Icon name='google-fill' /></Button>
 					<Button className={cls.btn} variant='primary'>Log in with Apple <Icon name='apple' /></Button>
 				</div>}
 				<form onSubmit={sendReq} className={cls.form}>
@@ -160,7 +172,7 @@ export const AuthBlock = (props: any) => {
 						<p className={cls.username__desc}>You can use a–z, 0-9 and _ <br />The minimum length is 5 simbols</p>
 					</div>}
 					{(['sign-up', 'sign-in'].includes(type)) && <>
-						<InputText w='100%' value={formData.email[0]} onChange={changeInp} name='email' validationRules={validations.email} label='Email' />
+						<InputText error={errInpApi} w='100%' value={formData.email[0]} onChange={changeInp} name='email' validationRules={validations.email} label='Email' />
 						<InputText w='100%' value={formData.password[0]} forgot={type == 'sign-in' ? 'link' : ''} name='password' onChange={changeInp} validationRules={validations.password} type='password' label='Password' />
 					</>}
 					{type == 'sign-up' && <InputText w='100%' name='password-confirm' validationRules={[{ custom: (value) => value == formData.password[0], message: 'Passwords do not match' }]} onChange={changeInp} type='password' label='Confirm password' />}

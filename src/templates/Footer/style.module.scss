@@ -27,6 +27,16 @@
 	align-items: center;
 	gap: inherit;
 	font-size: 20px;
+
+
+	svg {
+		transition: 0.2s color;
+		cursor: pointer;
+
+		&:hover {
+			color: var(--control_Icon-hover, #0079FF);
+		}
+	}
 }
 
 .btns {

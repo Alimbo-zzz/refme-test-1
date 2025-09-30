@@ -43,7 +43,8 @@ export type T_InputProps = Omit<ComponentProps<'input'>, 'onChange' | 'onBlur' |
 	onFocus?: (e: T_InpChange) => void;
 	setter?: (e: string) => void;
 	label?: string | ReactElement;
-	message?: string | ReactElement;
+	message?: string | ReactElement | null | undefined;
+	error?: string | ReactElement | null | undefined;
 	isRecent?: boolean;
 	popular?: null | string[];
 	advice?: null | string[];
@@ -75,6 +76,7 @@ export const InputText = (props: T_InputProps) => {
 		isRecent = false,
 		popular,
 		advice,
+		error,
 		forgot,
 		...rest
 	} = props;
@@ -84,10 +86,11 @@ export const InputText = (props: T_InputProps) => {
 	const inpRef = useRef<HTMLInputElement>(null);
 	const [hintVisible, SET_hintVisible] = useState(false);
 
+	if (typeof window !== 'undefined')
 
-	useEffect(() => {
-		if (isFocused) SET_hintVisible(true);
-	}, [isFocused])
+		useEffect(() => {
+			if (isFocused) SET_hintVisible(true);
+		}, [isFocused])
 
 	useEffect(() => {
 		const closeHint = (e: any) => {
@@ -208,7 +211,7 @@ export const InputText = (props: T_InputProps) => {
 					<input {...ops.inp} />
 				</InpIcons>
 			</div>
-			{(showValidation || message) && <InpFoot {...({ message, validation, shouldShowValidation, isTouched })} />}
+			{(showValidation || message) && <InpFoot {...({ message, error, validation, shouldShowValidation, isTouched })} />}
 			{type == 'search' && <InpHint {...({ clear, SET_hintVisible, hintVisible, value, setIsTouched, inpRef, isFocused, setter, isRecent, popular, advice })} />}
 		</div>
 	</>)

@@ -1,5 +1,4 @@
 .wrap {
-	color: var(--main-card-first-title, #FFF);
 	width: 100%;
 	aspect-ratio: 2.9/1;
 	overflow: hidden;
@@ -19,6 +18,18 @@
 
 	&[data-var=accent] {
 		background-color: var(--main-card-second-bg, #0079FF);
+
+		.title {
+			color: var(--main-card-second-title, #FFF);
+		}
+
+		.num {
+			color: var(--main-card-first-number, #FFF);
+		}
+
+		.desc {
+			color: var(--main-card-second-description, #C5D8EC);
+		}
 	}
 }
 
@@ -40,6 +51,7 @@
 	width: 1.2em;
 	position: relative;
 	user-select: none;
+	color: var(--main-card-first-number, #FFF);
 
 	span {
 		position: absolute;
@@ -58,11 +70,12 @@
 }
 
 .title {
+	color: var(--main-card-first-title, #FFF);
 	grid-area: title;
 }
 
 .desc {
-	grid-area: desc;
 	color: var(--main-card-first-description, #AEBCD3);
+	grid-area: desc;
 	width: 280px;
 }

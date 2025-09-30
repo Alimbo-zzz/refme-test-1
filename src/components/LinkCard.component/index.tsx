@@ -48,7 +48,7 @@ export const LinkCard = (props: any) => {
 			<div className={cls.foot}>
 				<div className={cls.copy}>
 					<a target='_blank' href={copyText}>{copyText}</a>
-					<div className={cls.copy__icon} onClick={copyAction}>
+					<div data-copy={isCopy} className={cls.copy__icon} onClick={copyAction}>
 						{isCopy
 							? <Icon name='tick' />
 							: <Icon name='copy' />
