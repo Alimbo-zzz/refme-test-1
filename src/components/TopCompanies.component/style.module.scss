@@ -112,3 +112,60 @@
 		text-overflow: ellipsis;
 	}
 }
+
+
+
+.mobile {
+	margin: 40px auto;
+	overflow: hidden;
+
+	&__head {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		margin-bottom: 20px;
+	}
+
+	&__companies {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 0 10px;
+	}
+
+	&__company {
+		display: flex;
+		align-items: center;
+		gap: var(--indent-12, 12px);
+		padding: var(--padding-sm, 12px);
+		padding-right: 24px;
+		user-select: none;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		border-radius: var(--rounding-default, 20px);
+		background: var(--sds-color-background-brand-secondary, #1A2542);
+
+		&:hover {
+			background: var(--Background-Dark-Secondary_Hover, #2B417B);
+		}
+
+		img {
+			width: 100%;
+			aspect-ratio: 1/1;
+			object-fit: contain;
+			object-position: center;
+			max-width: 50px;
+		}
+
+		h4 {
+			color: var(--sds-color-text-brand-default, #fff);
+			font-size: var(--Headline-size2, 20px);
+			font-style: normal;
+			font-weight: var(--Headline-weight_medium, 500);
+			line-height: 100%;
+			letter-spacing: -0.4px;
+		}
+
+
+	}
+}
