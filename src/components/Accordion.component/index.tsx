@@ -70,7 +70,7 @@ export const Accordion = ({ text = '', title = '' }: any) => {
 						animate="open"
 						exit="collapsed"
 					>
-						<Text className={cls.text}>{text}</Text>
+						<Text className={cls.text} dangerouslySetInnerHTML={{ __html: text }}></Text>
 					</motion.div>
 				)}
 			</AnimatePresence>

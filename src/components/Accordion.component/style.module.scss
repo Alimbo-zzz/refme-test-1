@@ -7,6 +7,34 @@
 	align-self: stretch;
 	border-radius: var(--rounding-big, 24px);
 	background: var(--Background-Default-Secondary, #FFF);
+
+
+	ol {
+		counter-reset: item;
+		list-style: none;
+		padding-left: 0;
+	}
+
+	ol li {
+		counter-increment: item;
+		position: relative;
+		padding-left: 1.2em;
+		margin-left: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	ol li::before {
+		content: counter(item) ".";
+		position: absolute;
+		left: 0;
+		font-weight: bold;
+		color: #222;
+	}
+
+	b {
+		color: #222;
+		font-weight: 500;
+	}
 }
 
 .title {

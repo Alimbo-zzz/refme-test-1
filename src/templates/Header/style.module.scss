@@ -9,7 +9,7 @@
 	transition: box-shadow 0.3s, padding 0.3s;
 
 	&[data-shadow=true] {
-		box-shadow: 0 2px 15px 0px rgba($color: #000000, $alpha: 0.2);
+		// box-shadow: 0 2px 15px 0px rgba($color: #000000, $alpha: 0.1);
 		padding: 10px 0;
 	}
 

@@ -1,8 +1,9 @@
 h1.title {
 	font-size: var(--Hero-size, 64px);
-	line-height: 86%;
+	line-height: 120%;
 	font-weight: var(--Title-weight, 400);
 	letter-spacing: -2.56px;
+	margin-bottom: -0.2em;
 }
 
 h2.title {
